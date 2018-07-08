@@ -5,7 +5,7 @@ import Slide_2 from '../img/2.jpg';
 import Slide_3 from '../img/3.jpg';
 import Slide_4 from '../img/4.jpg';
 
-class Link extends React.Component{
+class Slider extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -47,7 +47,7 @@ class Link extends React.Component{
 			if(this.state.active === this.state.max - 1){
 				this.state.active = 0
 			} else {
-				this.active++
+				this.state.active++
 			}
 
 			this.setState({
@@ -89,18 +89,18 @@ class Link extends React.Component{
 	}
 
 	isActive(value) {
-		if (this.state.active === active){
+		if (this.state.active === value){
 			return 'active'
 		}
 	}
 
 	setSliderStyles() {
 
-		const transition = this.state.active * -100/this.state.slides.length
+		const transition = this.state.active * - 100/this.state.slides.length
 
 		return {
 			width: (this.state.slides.length + 100) + '%',
-			transform = `traslateX(${transition}%)`
+			transform: `traslateX(${transition}%)`
 		}
 	}
 
@@ -176,8 +176,8 @@ class Link extends React.Component{
 				<div className="slider">
 					<div
 						className="wrapper"
-						style={this.setSliderStyles()}
-						{this.render.slides()}
+						style={this.setSliderStyles()}>
+						{this.renderSlides()}
 					</div>
 
 					{this.renderArrows()}
@@ -189,8 +189,10 @@ class Link extends React.Component{
 					<a
 						className="toggle-play"
 						onClick={this.toggleAutoPlay}>
-							
+						{this.renderPlayStop()}
+					</a>
+				</div>
 			)
 	}
-
 }
+export default Slider
